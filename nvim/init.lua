@@ -1,0 +1,5 @@
+require("antony.setting")
+require("antony.lazy")
+require("antony.keymaps")
+require("antony.autocommands")
+require("current-theme")
