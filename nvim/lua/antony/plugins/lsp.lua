@@ -35,6 +35,10 @@ return {
 
 				map("<leader>gt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
 
+				map("<leader>kk", vim.lsp.buf.signature_help, "Signature Help")
+
+				map("<leader>gh", vim.lsp.buf.hover, "[H]over")
+
 				-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
 				---@param client vim.lsp.Client
 				---@param method vim.lsp.protocol.Method
