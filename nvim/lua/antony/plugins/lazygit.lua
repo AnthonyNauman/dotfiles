@@ -18,7 +18,7 @@ return {
 	},
 	config = function()
 		vim.keymap.set("n", "<leader>lg", function()
-			local dir = utils.get_curr_file_folder_path() -- Директория текущего файла
+			local dir = utils.get_current_buffer_path() -- Директория текущего файла
 
 			require("toggleterm.terminal").Terminal
 				:new({

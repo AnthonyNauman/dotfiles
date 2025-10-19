@@ -26,12 +26,33 @@ function M.get_startup_path()
 		end
 	end
 
-	return get_workbench()
+	return M.get_workbench()
+end
+
+function M.get_current_buffer_path()
+	local bufname = vim.fn.bufname()
+	local pattern = "oil://"
+	if bufname:match(pattern) then
+		local cur_file = string.gsub(bufname, pattern, "")
+		print(cur_file)
+		return cur_file
+	end
+
+	local file = vim.fn.expand("%:p")
+	print(file)
+	return vim.fn.fnamemodify(file, ":h")
 end
 
 function M.get_curr_file_folder_path()
-	local current_file = vim.fn.expand("%:p")
-	return vim.fn.fnamemodify(current_file, ":h")
+	local bufname = vim.fn.bufname()
+	if bufname == "" or vim.fn.isdirectory(bufname) == 1 then
+		local cwd = vim.fn.getcwd()
+		return cwd
+	else
+		local current_file = vim.fn.expand("%:p")
+		local fname = vim.fn.fnamemodify(current_file, ":h")
+		return fname
+	end
 end
 
 function M.get_curr_file_path()
